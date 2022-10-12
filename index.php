@@ -17,4 +17,11 @@ $servername = "165.227.18.177";
 $username = "alqadiou";
 $password = "1[L0B2U1kkqXh*";
 $dbname = "alqadiou_homework4";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+  if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+} 
+
 ?>
