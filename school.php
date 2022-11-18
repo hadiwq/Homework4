@@ -28,25 +28,25 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into instructor (instructor_name) value (?)";
+      $sqlAdd = "insert into School (school_name) value (?)";
       $stmtAdd = $conn->prepare($sqlAdd);
       $stmtAdd->bind_param("s", $_POST['iName']);
       $stmtAdd->execute();
-      echo '<div class="alert alert-success" role="alert">New instructor added.</div>';
+      echo '<div class="alert alert-success" role="alert">New School added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update instructor set instructor_name=? where instructor_id=?";
+      $sqlEdit = "update school set school_name=? where school_id=?";
       $stmtEdit = $conn->prepare($sqlEdit);
       $stmtEdit->bind_param("si", $_POST['iName'], $_POST['iid']);
       $stmtEdit->execute();
-      echo '<div class="alert alert-success" role="alert">Instructor edited.</div>';
+      echo '<div class="alert alert-success" role="alert">School edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "delete from instructor where instructor_id=?";
+      $sqlDelete = "delete from school where school_id=?";
       $stmtDelete = $conn->prepare($sqlDelete);
       $stmtDelete->bind_param("i", $_POST['iid']);
       $stmtDelete->execute();
-      echo '<div class="alert alert-success" role="alert">Instructor deleted.</div>';
+      echo '<div class="alert alert-success" role="alert">School deleted.</div>';
       break;
   }
 }
