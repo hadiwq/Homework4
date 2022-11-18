@@ -56,9 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Centered dropdown
   </button>
   <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="index.php">Instructors</a></li>
     <li><a class="dropdown-item" href="school.php">School</a></li>
-    <li><a class="dropdown-item" href="#">Action two</a></li>
-    <li><a class="dropdown-item" href="#">Action three</a></li>
+    <li><a class="dropdown-item" href="corse.php">Course</a></li>
+    <li><a class="dropdown-item" href="classroom.php">Classroom</a></li>
   </ul>
 </div>
       
