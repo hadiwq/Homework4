@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       break;
   }
 }
-?>
+
     <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown link
@@ -60,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <li><a class="dropdown-item" href="#">Something else here</a></li>
   </ul>
 </div>
+      ?>
       <h1>Instructors</h1>
       <table class="table table-striped">
         <thead>
