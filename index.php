@@ -49,12 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 ?>
-    <select name="language" id="language">
-  <option value="javascript">JavaScript</option>
-  <option value="python">Python</option>
-  <option value="c++">C++</option>
-  <option value="java">Java</option>
-</select>
+    <div class="dropdown-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
       
       <h1>Instructors</h1>
       <table class="table table-striped">
