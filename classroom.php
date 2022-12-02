@@ -135,23 +135,23 @@ $conn->close();
       </table>
       <br />
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourse">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClassroom">
         Add New
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="addClassroom" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addCourseLabel" aria-hidden="true">
+      <div class="modal fade" id="addClassroom" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addClassroomLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addCourseLabel">Add Classroom</h1>
+              <h1 class="modal-title fs-5" id="addClassroomLabel">Add Classroom</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form method="post" action="">
                 <div class="mb-3">
                   <label for="room_building" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="decription" aria-describedby="nameHelp" name="iName">
+                  <input type="text" class="form-control" id="room_num" aria-describedby="nameHelp" name="iName">
                   <div id="classroomHelp" class="form-text">Enter the Classroom's name.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
