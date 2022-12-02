@@ -37,14 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Edit':
       $sqlEdit = "update school set school_name=? where school_id=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("si", $_POST['iName'], $_POST['iid']);
+      $stmtEdit->bind_param("si", $_POST['iName'], $_POST['iiid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">School edited.</div>';
       break;
     case 'Delete':
       $sqlDelete = "delete from school where school_id=?";
       $stmtDelete = $conn->prepare($sqlDelete);
-      $stmtDelete->bind_param("i", $_POST['iid']);
+      $stmtDelete->bind_param("i", $_POST['iiid']);
       $stmtDelete->execute();
       echo '<div class="alert alert-success" role="alert">School deleted.</div>';
       break;
@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
                           <input type="text" class="form-control" id="editSchool<?=$row["school_id"]?>Name" aria-describedby="editSchool<?=$row["school_id"]?>Help" name="iName" value="<?=$row['school_name']?>">
                           <div id="editSchool<?=$row["school_id"]?>Help" class="form-text">Enter the School's name.</div>
                         </div>
-                        <input type="hidden" name="iid" value="<?=$row['school_id']?>">
+                        <input type="hidden" name="iiid" value="<?=$row['school_id']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
@@ -117,7 +117,7 @@ if ($result->num_rows > 0) {
             </td>
             <td>
               <form method="post" action="">
-                <input type="hidden" name="iid" value="<?=$row["school_id"]?>" />
+                <input type="hidden" name="iiid" value="<?=$row["school_id"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
                 <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
               </form>
