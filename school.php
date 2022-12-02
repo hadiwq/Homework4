@@ -28,7 +28,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into School_2 (name) value (?)";
+      $sqlAdd = "insert into school_2 (name) value (?)";
       $stmtAdd = $conn->prepare($sqlAdd);
       $stmtAdd->bind_param("si", $_POST['iSchool']);
       $stmtAdd->execute();
