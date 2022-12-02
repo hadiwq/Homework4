@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </ul>
 </div>
       
-      <h1>Course</h1>
+      <h1>Classroom</h1>
       <table class="table table-striped">
         <thead>
           <tr>
