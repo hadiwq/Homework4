@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $stmtAdd = $conn->prepare($sqlAdd);
       $stmtAdd->bind_param("s", $_POST['iName']);
       $stmtAdd->execute();
-      echo '<div class="alert alert-success" role="alert">New course added.</div>';
+      echo '<div class="alert alert-success" role="alert">New Classroom added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update classroom set room_building=? where room_num=?";
@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
           
           <tr>
             <td><?=$row["room_num"]?></td>
-            <td><a href="instructor-section.php?id=<?=$row["room_num"]?>"><?=$row["room_num"]?></a></td>
+            <td><?=$row["room_building"]?></td>
             <td>
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editClassroom<?=$row["room_num"]?>">
                 Edit
@@ -102,8 +102,8 @@ if ($result->num_rows > 0) {
                       <form method="post" action="">
                         <div class="mb-3">
                           <label for="editClassroom<?=$row["room_building"]?>Name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editCourse<?=$row["room_num"]?>Name" aria-describedby="editCourse<?=$row["room_num"]?>Help" name="iName" value="<?=$row['room_building']?>">
-                          <div id="editCourse<?=$row["course_id"]?>Help" class="form-text">Enter the Classroom's name.</div>
+                          <input type="text" class="form-control" id="editClassroom<?=$row["room_num"]?>Name" aria-describedby="editClassroom<?=$row["room_num"]?>Help" name="iName" value="<?=$row['room_building']?>">
+                          <div id="editClassroom<?=$row["room_num"]?>Help" class="form-text">Enter the Classroom's name.</div>
                         </div>
                         <input type="hidden" name="iid" value="<?=$row['room_num']?>">
                         <input type="hidden" name="saveType" value="Edit">
