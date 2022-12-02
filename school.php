@@ -28,21 +28,21 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into School (school_name) value (?)";
+      $sqlAdd = "insert into School_2 (name) value (?)";
       $stmtAdd = $conn->prepare($sqlAdd);
       $stmtAdd->bind_param("si", $_POST['iSchool']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New School added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update school set school_name=? where school_id=?";
+      $sqlEdit = "update school_2 set name=? where id=?";
       $stmtEdit = $conn->prepare($sqlEdit);
       $stmtEdit->bind_param("sii", $_POST['iSchool'], $_POST['iiid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">School edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "delete from school where school_id=?";
+      $sqlDelete = "delete from school_2 where school_id=?";
       $stmtDelete = $conn->prepare($sqlDelete);
       $stmtDelete->bind_param("ii", $_POST['iiid']);
       $stmtDelete->execute();
@@ -76,8 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <tbody>
           
 <?php
-$sql = "SELECT `school`.*
-FROM `school`";
+$sql = "SELECT * FROM school_2";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -86,27 +85,27 @@ if ($result->num_rows > 0) {
 ?>
           
           <tr>
-            <td><?=$row["school_id"]?></td>
-            <td><?=$row["school_name"]?></td>
+            <td><?=$row["id"]?></td>
+            <td><?=$row["name"]?></td>
             <td>
-              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editSchool<?=$row["school_id"]?>">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editSchool<?=$row["id"]?>">
                 Edit
               </button>
-              <div class="modal fade" id="editSchool<?=$row["school_id"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editSchool<?=$row["school_id"]?>Label" aria-hidden="true">
+              <div class="modal fade" id="editSchool<?=$row["id"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editSchool<?=$row["id"]?>Label" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="editSchool<?=$row["school_id"]?>Label">Edit School ID</h1>
+                      <h1 class="modal-title fs-5" id="editSchool<?=$row["id"]?>Label">Edit School ID</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editSchool<?=$row["school_id"]?>Name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editSchool<?=$row["school_id"]?>Name" aria-describedby="editSchool<?=$row["school_id"]?>Help" name="iSchool" value="<?=$row['school_name']?>">
+                          <label for="editSchool<?=$row["id"]?>Name" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="editSchool<?=$row["id"]?>Name" aria-describedby="editSchool<?=$row["id"]?>Help" name="iSchool" value="<?=$row['name']?>">
                           <div id="editSchool<?=$row["school_id"]?>Help" class="form-text">Enter the School's name.</div>
                         </div>
-                        <input type="hidden" name="iiid" value="<?=$row['school_id']?>">
+                        <input type="hidden" name="iiid" value="<?=$row['id']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
@@ -117,7 +116,7 @@ if ($result->num_rows > 0) {
             </td>
             <td>
               <form method="post" action="">
-                <input type="hidden" name="iiid" value="<?=$row["school_id"]?>" />
+                <input type="hidden" name="iiid" value="<?=$row["id"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
                 <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
               </form>
@@ -151,8 +150,8 @@ $conn->close();
             <div class="modal-body">
               <form method="post" action="">
                 <div class="mb-3">
-                  <label for="school_name" class="form-label">School Name</label>
-                  <input type="text" class="form-control" id="school_name" aria-describedby="nameHelp" name="iSchool">
+                  <label for="name" class="form-label">School Name</label>
+                  <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="iSchool">
                   <div id="nameHelp" class="form-text">Enter the School's name.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
