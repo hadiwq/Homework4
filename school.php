@@ -30,14 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Add':
       $sqlAdd = "insert into School (school_name) value (?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("s", $_POST['iName']);
+      $stmtAdd->bind_param("s", $_POST['iSchool']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New School added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update school set school_name=? where school_id=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("si", $_POST['iName'], $_POST['iiid']);
+      $stmtEdit->bind_param("si", $_POST['iSchool'], $_POST['iiid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">School edited.</div>';
       break;
@@ -103,7 +103,7 @@ if ($result->num_rows > 0) {
                       <form method="post" action="">
                         <div class="mb-3">
                           <label for="editSchool<?=$row["school_id"]?>Name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editSchool<?=$row["school_id"]?>Name" aria-describedby="editSchool<?=$row["school_id"]?>Help" name="iName" value="<?=$row['school_name']?>">
+                          <input type="text" class="form-control" id="editSchool<?=$row["school_id"]?>Name" aria-describedby="editSchool<?=$row["school_id"]?>Help" name="iSchool" value="<?=$row['school_name']?>">
                           <div id="editSchool<?=$row["school_id"]?>Help" class="form-text">Enter the School's name.</div>
                         </div>
                         <input type="hidden" name="iiid" value="<?=$row['school_id']?>">
@@ -152,7 +152,7 @@ $conn->close();
               <form method="post" action="">
                 <div class="mb-3">
                   <label for="school_name" class="form-label">School Name</label>
-                  <input type="text" class="form-control" id="school_name" aria-describedby="nameHelp" name="iName">
+                  <input type="text" class="form-control" id="school_name" aria-describedby="nameHelp" name="iSchool">
                   <div id="nameHelp" class="form-text">Enter the School's name.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
