@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="index.php">Instructors</a></li>
     <li><a class="dropdown-item" href="school.php">School</a></li>
-    <li><a class="dropdown-item" href="corse.php">Course</a></li>
+    <li><a class="dropdown-item" href="course.php">Course</a></li>
     <li><a class="dropdown-item" href="classroom.php">Classroom</a></li>
   </ul>
 </div>
