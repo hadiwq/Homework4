@@ -30,21 +30,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Add':
       $sqlAdd = "insert into School (school_name) value (?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("s", $_POST['iSchool']);
+      $stmtAdd->bind_param("si", $_POST['iSchool']);
       $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New School added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update school set school_name=? where school_id=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("si", $_POST['iSchool'], $_POST['iiid']);
+      $stmtEdit->bind_param("sii", $_POST['iSchool'], $_POST['iiid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">School edited.</div>';
       break;
     case 'Delete':
       $sqlDelete = "delete from school where school_id=?";
       $stmtDelete = $conn->prepare($sqlDelete);
-      $stmtDelete->bind_param("i", $_POST['iiid']);
+      $stmtDelete->bind_param("ii", $_POST['iiid']);
       $stmtDelete->execute();
       echo '<div class="alert alert-success" role="alert">School deleted.</div>';
       break;
